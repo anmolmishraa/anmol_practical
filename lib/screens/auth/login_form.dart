@@ -29,8 +29,8 @@ class _LoginFormState extends State<LoginForm> {
     _onLoginButtonPressed() {
       BlocProvider.of<LoginBloc>(context).add(
         LoginButtonPressed(
-          email: emailController.text,
-          password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
         ),
       );
     }
@@ -88,13 +88,14 @@ class _LoginFormState extends State<LoginForm> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Container(
+                          SizedBox(
                             height: 56,
                             child: TextField(
                               controller: emailController,
                               keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.only(left: 10),
                               ),
                             ),
                           ),
@@ -114,15 +115,22 @@ class _LoginFormState extends State<LoginForm> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Container(
+                          SizedBox(
                             height: 56,
-                            child: TextField(
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              obscureText: showPassword,
-                              decoration: InputDecoration(
-                                border: const OutlineInputBorder(),
-                                suffixIcon: Align(
+                            child: Stack(
+                              alignment: Alignment.centerRight,
+                              children: [
+                                TextField(
+                                  controller: passwordController,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  obscureText: !showPassword,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 10, right: 70),
+                                  ),
+                                ),
+                                Align(
                                   alignment: Alignment.centerRight,
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 10),
@@ -144,7 +152,7 @@ class _LoginFormState extends State<LoginForm> {
                                     ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ],

@@ -64,7 +64,10 @@ class MyApp extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
-            return MainScreen();
+            return MainScreen(
+              key: UniqueKey(),
+              userRepository: userRepository,
+            );
           }
           if (state is AuthenticationUnauthenticated) {
             return LoginScreen(

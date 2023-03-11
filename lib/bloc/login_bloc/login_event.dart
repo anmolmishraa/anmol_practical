@@ -18,5 +18,5 @@ class LoginButtonPressed extends LoginEvent {
 
   @override
   String toString() =>
-      'LoginButtonPressed { email: $email, password: $password }';
+      'LoginButtonPressed { email: $email, password: $password, device_token: "ssssssss"}';
 }

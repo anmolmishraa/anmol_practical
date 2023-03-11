@@ -5,6 +5,7 @@ abstract class SignupEvent extends Equatable {
 }
 
 class SignupButtonPressed extends SignupEvent {
+  final  BuildContext context;
   final String name;
   final String surname;
   final String email;
@@ -12,6 +13,7 @@ class SignupButtonPressed extends SignupEvent {
   final String password;
 
   const SignupButtonPressed({
+    required this.context,
     required this.name,
     required this.surname,
     required this.email,

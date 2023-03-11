@@ -26,15 +26,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     if (event is LoginButtonPressed) {
       yield LoginLoading();
-
+      print("!!!!!!!!!!!!!!${event.email}!!!!!!!!!!!!!!!!");
+      print("!!!!!!!!!!!!!!${event.password}!!!!!!!!!!!!!!!!");
+      // dainikss12122@gmail.com
       try {
+        print("2222222222222222222222");
         final token = await userRepository.login(
           event.email,
           event.password,
         );
-        authenticationBloc.add(LoggedIn(token: token));
+        authenticationBloc.add(LoggedIn(token: token.toString()));
         yield LoginInitial();
-      } catch (error) {
+      } catch (error, s) {
+        print("++++++++++++++++${error}");
+        print("_________________${s}");
         yield LoginFailure(error: error.toString());
       }
     }

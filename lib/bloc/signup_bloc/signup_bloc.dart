@@ -5,6 +5,7 @@ import 'package:auth_bloc/bloc/auth_bloc/auth_event.dart';
 import 'package:auth_bloc/repositories/repositories.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 part 'signup_event.dart';
 part 'signup_state.dart';
 
@@ -28,6 +29,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
       try {
         final token = await userRepository.signup(
+          event.context,
           event.name,
           event.surname,
           event.email,

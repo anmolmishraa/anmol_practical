@@ -31,11 +31,12 @@ class _SignupFormState extends State<SignupForm> {
     _onSignupButtonPressed() {
       BlocProvider.of<SignupBloc>(context).add(
         SignupButtonPressed(
-          name: '',
-          surname: '',
-          email: emailController.text,
-          password: passwordController.text,
-          resetPassword: '',
+          context: context,
+          name: nameController.text.trim(),
+          surname: surnameController.text.trim(),
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+          resetPassword: confirmPasswordController.text.trim(),
         ),
       );
     }
@@ -86,13 +87,14 @@ class _SignupFormState extends State<SignupForm> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 56,
                           child: TextField(
                             controller: nameController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.only(left: 10),
                             ),
                           ),
                         ),
@@ -112,13 +114,14 @@ class _SignupFormState extends State<SignupForm> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 56,
                           child: TextField(
                             controller: surnameController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.only(left: 10),
                             ),
                           ),
                         ),
@@ -138,13 +141,14 @@ class _SignupFormState extends State<SignupForm> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 56,
                           child: TextField(
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.only(left: 10),
                             ),
                           ),
                         ),
@@ -164,15 +168,22 @@ class _SignupFormState extends State<SignupForm> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 56,
-                          child: TextField(
-                            controller: passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: showPassword,
-                            decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
-                              suffixIcon: Align(
+                          child: Stack(
+                            alignment: Alignment.centerRight,
+                            children: [
+                              TextField(
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: showPassword,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  contentPadding:
+                                      EdgeInsets.only(left: 10, right: 70),
+                                ),
+                              ),
+                              Align(
                                 alignment: Alignment.centerRight,
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 10),
@@ -194,7 +205,7 @@ class _SignupFormState extends State<SignupForm> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ],
@@ -213,15 +224,22 @@ class _SignupFormState extends State<SignupForm> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 56,
-                          child: TextField(
-                            controller: confirmPasswordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: showConfirmPassword,
-                            decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
-                              suffixIcon: Align(
+                          child: Stack(
+                            alignment: Alignment.centerRight,
+                            children: [
+                              TextField(
+                                controller: confirmPasswordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: showConfirmPassword,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  contentPadding:
+                                      EdgeInsets.only(left: 10, right: 70),
+                                ),
+                              ),
+                              Align(
                                 alignment: Alignment.centerRight,
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 10),
@@ -244,7 +262,7 @@ class _SignupFormState extends State<SignupForm> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ],
