@@ -7,8 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc/auth.dart';
 import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
-import 'screens/auth/intro_screen.dart';
-import 'package:auth_bloc/style/theme.dart' as Style;
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -93,8 +91,8 @@ class MyApp extends StatelessWidget {
                           height: 25.0,
                           width: 25.0,
                           child: CircularProgressIndicator(
-                            valueColor: new AlwaysStoppedAnimation<Color>(
-                                Style.Colors.mainColor),
+                            valueColor:
+                                new AlwaysStoppedAnimation<Color>(Colors.blue),
                             strokeWidth: 4.0,
                           ),
                         )
@@ -122,8 +120,8 @@ class MyApp extends StatelessWidget {
                         height: 25.0,
                         width: 25.0,
                         child: CircularProgressIndicator(
-                          valueColor: new AlwaysStoppedAnimation<Color>(
-                              Style.Colors.mainColor),
+                          valueColor:
+                              new AlwaysStoppedAnimation<Color>(Colors.blue),
                           strokeWidth: 4.0,
                         ),
                       )
